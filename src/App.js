@@ -7,6 +7,7 @@ import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import Checkout from './Pages/Checkout/Checkout';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
+import RequireAuth from './Pages/Shared/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -15,7 +16,13 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/checkout/:serviceId' element={<Checkout></Checkout>}></Route>
+
+        <Route path='/checkout/:serviceId' element={
+          <RequireAuth>
+            <Checkout></Checkout>
+          </RequireAuth>
+        }></Route>
+
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
 
