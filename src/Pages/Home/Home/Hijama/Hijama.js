@@ -21,7 +21,7 @@ const Hijama = () => {
                         <p className='mt-3 mb-5'>
                             Hijama or cupping is an effective treatment for this condition. Cupping is an effective treatment for lung diseases like chronic cough, asthma, bronchial congestion, and pleurisy. Often the health of your skin directly reflects what is happening inside your body.
                         </p>
-                        <Link className='bg-red-300 px-3 py-2 rounded-md hover:bg-red-400' to={'/hijama'}>Know More About Hijama</Link>
+                        <Link className='bg-red-300 p-3 rounded-md hover:bg-red-400' to={'/hijama'}>Know More About Hijama</Link>
                     </article>
 
                 </div>

@@ -13,7 +13,7 @@ const Login = () => {
         <div className='container mx-auto mb-10'>
 
             <div className='mx-auto mt-3 max-w-md text-center border-2 p-5 rounded-lg bg-slate-50'>
-                <h2 className='text-red-500 text-4xl font-semibold text-center mb-5'>Login</h2>
+                <h2 className='text-red-500 text-4xl font-semibold text-center mb-4'>Login</h2>
 
                 <form onSubmit={handleLogin}>
                     <input type="email" name="email" id="email" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-900 my-2 rounded-md' placeholder='Email Address' required />

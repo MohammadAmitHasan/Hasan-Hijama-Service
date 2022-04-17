@@ -1,7 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.inin'
 
 const SignUp = () => {
+
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    let errorInfo = '';
+
     const signupHandle = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -10,20 +22,30 @@ const SignUp = () => {
         const confirmPassword = e.target.confirmPassword.value;
 
         if (password === confirmPassword) {
-
+            createUserWithEmailAndPassword(email, password);
         }
         else {
             alert('Password did not match')
         }
     }
+
+    if (error) {
+        errorInfo = error.message;
+    }
+
+
     return (
         <div className='container mx-auto mb-10'>
 
             <div className='mx-auto mt-3 max-w-md text-center border-2 p-5 rounded-lg bg-slate-50'>
-                <h2 className='text-red-500 text-4xl font-semibold text-center mb-5'>Sign Up</h2>
+                <h2 className='text-red-500 text-4xl font-semibold text-center mb-4'>Sign Up</h2>
+
+                {
+                    (error || errorInfo) && <p className='p-4 rounded bg-red-300'>{errorInfo}</p>
+                }
 
                 <form onSubmit={signupHandle}>
-                    <input type="text" name='name' className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Your Full Name' required />
+                    <input type="text" name='name' className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Your Full Name' />
 
                     <input type="email" name="email" id="email" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Email Address' required />
 

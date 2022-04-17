@@ -4,7 +4,7 @@ import Service from './Service/Service';
 
 const Services = () => {
     const [services, setServices] = useServices();
-    console.log(services);
+
     return (
         <div className='container mx-auto mt-10 p-5'>
             <h2 className='text-red-500 text-4xl font-semibold text-center'>My Services</h2>

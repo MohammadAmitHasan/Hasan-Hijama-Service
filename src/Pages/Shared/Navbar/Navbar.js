@@ -12,7 +12,7 @@ const Navbar = () => {
                 <div className='w-72'>
                     <img src={logo} className='h-10 mx-auto mt-0.5' alt="" />
                     <div className='text-center'>
-                        <h4 className='text-xl font-semibold'><span className='text-red-500'>Hasan</span> Hijama Services</h4>
+                        <h4 className='text-xl mb-0.5 font-semibold'><span className='text-red-500'>Hasan</span> Hijama Services</h4>
                     </div>
                 </div>
                 <div onClick={() => setOpen(!open)} className='w-6 h-6 md:hidden ml-auto mr-4'>
