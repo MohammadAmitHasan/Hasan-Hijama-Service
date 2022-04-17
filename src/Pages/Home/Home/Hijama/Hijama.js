@@ -25,8 +25,6 @@ const Hijama = () => {
                     </article>
 
                 </div>
-
-
             </div>
         </div>
     );

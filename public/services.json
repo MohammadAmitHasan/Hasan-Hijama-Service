@@ -1,37 +1,37 @@
 [
-    {
-      "id": 1,
-      "name": "Dry Cupping Massage",
-      "photo": "https://i.ibb.co/Ky89Rs2/dry.jpg",
-      "price": 2000,
-      "description": "Dry cupping is a manual therapy that involves positioning a cup on the skin and creating a vacuum to apply negative pressure. This negative pressure increases blood flow to the area."
-    },
-    {
-      "id": 2,
-      "name": "Wet Cupping",
-      "photo": "https://i.ibb.co/hmRrb51/wet.jpg",
-      "price": 3000,
-      "description": "Wet cupping creates a mild suction by leaving a cup in place for about 3 minutes. Then after removing cup, we use a small scalpel to make light, tiny cuts on your skin. Next, we do a second suction to draw out a small quantity of blood. You might get 3-5 cups in your first session."
-    },
-    {
-      "id": 3,
-      "name": "Deep Tissue Massage",
-      "photo": "https://i.ibb.co/thq9SFB/deeptissue.jpg",
-      "price": 1000,
-      "description": "Deep tissue massage is a massage technique that is mainly used to treat musculoskeletal issues, such as strains and sports injuries. It involves applying sustained pressure using slow, deep strokes to target the inner layers of your muscles and connective tissues."
-    },
-    {
-      "id": 4,
-      "name": "Magnetic Cupping",
-      "photo": "https://i.ibb.co/02cwWRM/Magnetic-Cupping.jpg",
-      "price": 2500,
-      "description": "Magnetic Cupping is wonderfully different, the strength levels of the magnets are appropriately applied to your meridian lines balancing your energy while loosening the tight muscular fibers. A full blanket of… More. The body heals itself best, when the body can revive the cells without outside stress."
-    },
-    {
-      "id": 5,
-      "name": "Hijama Equipments",
-      "photo": "https://i.ibb.co/fkf3mfp/equipment.jpg",
-      "price": 10000,
-      "description": "Get all the required equipments for doing Hiajama or cupping. You will get 1 set for single type of treatmet. If you need more you have to pay extra"
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Dry Cupping Massage",
+    "photo": "https://i.ibb.co/Ky89Rs2/dry.jpg",
+    "price": 2000,
+    "description": "Dry cupping is a manual therapy that involves positioning a cup on the skin and creating a vacuum to apply negative pressure. This negative pressure increases blood flow to the area."
+  },
+  {
+    "id": 2,
+    "name": "Wet Cupping",
+    "photo": "https://i.ibb.co/hmRrb51/wet.jpg",
+    "price": 3000,
+    "description": "Wet cupping creates a mild suction by leaving a cup in place for about 3 minutes. Then after removing cup, we use a small scalpel to make light, tiny cuts on your skin. Next, we do a second suction to draw out a small quantity of blood."
+  },
+  {
+    "id": 3,
+    "name": "Deep Tissue Massage",
+    "photo": "https://i.ibb.co/thq9SFB/deeptissue.jpg",
+    "price": 1000,
+    "description": "Deep tissue massage is a massage technique that is mainly used to treat musculoskeletal issues, such as strains and sports injuries. It involves applying sustained pressure using slow, deep strokes to target the inner layers of your muscles and connective tissues."
+  },
+  {
+    "id": 4,
+    "name": "Magnetic Cupping",
+    "photo": "https://i.ibb.co/02cwWRM/Magnetic-Cupping.jpg",
+    "price": 2500,
+    "description": "Magnetic Cupping is wonderfully different, the strength levels of the magnets are applied to your meridian lines balancing your energy while loosening the tight muscular fibers. The body heals itself best, when the body can revive the cells without outside stress."
+  },
+  {
+    "id": 5,
+    "name": "Hijama Equipments",
+    "photo": "https://i.ibb.co/fkf3mfp/equipment.jpg",
+    "price": 10000,
+    "description": "Get all the required equipments for doing Hiajama or cupping. You will get 1 set for single type of treatmet. If you need more you have to pay extra"
+  }
+]
