@@ -11,7 +11,7 @@ function CustomLink({ children, to, ...props }) {
     }
     return (
         <div>
-            <Link className='text-lg font-semibold mx-5 py-1 px-3 border-b-2 border-white hover:border-red-400 hover:bg-red-100 rounded-sm inline-block my-1 md:my-0'
+            <Link className='text-lg font-semibold mx-2 py-1 px-3 border-b-2 border-white hover:border-red-400 hover:bg-red-100 rounded-sm inline-block my-1 md:my-0'
                 style={activeStyle}
                 to={to}
                 {...props}
