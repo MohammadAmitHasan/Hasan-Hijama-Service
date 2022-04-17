@@ -35,7 +35,7 @@ const SignUp = () => {
 
 
     return (
-        <div className='container mx-auto mb-10'>
+        <div className='container mx-auto mb-10 p-5'>
 
             <div className='mx-auto mt-3 max-w-md text-center border-2 p-5 rounded-lg bg-slate-50'>
                 <h2 className='text-red-500 text-4xl font-semibold text-center mb-4'>Sign Up</h2>

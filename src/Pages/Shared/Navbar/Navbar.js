@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import logo from '../../../images/logo.png'
 import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import CustomLink from './CustomLink/CustomLink';
-
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.inin';
 
 const Navbar = () => {
+
+    const [user, loading, error] = useAuthState(auth);
+
     const [open, setOpen] = useState(false);
     return (
         <div className='sticky top-0 z-50 bg-white'>
@@ -23,8 +28,14 @@ const Navbar = () => {
                     <CustomLink to={'/hijama'}>Hijama</CustomLink>
                     <CustomLink to={'/blog'}>Blog</CustomLink>
                     <CustomLink to={'/about'}>About</CustomLink>
-                    <CustomLink to={'/login'}>Login</CustomLink>
-                    <CustomLink to={'/signup'}>Sign Up</CustomLink>
+                    {
+                        user ? <button onClick={() => signOut(auth)} className='text-lg text-red-500 font-semibold mx-2 py-1 px-3 border-b-2 border-white hover:border-red-400 hover:bg-red-100 rounded-sm inline-block my-1 md:my-0'>Logout</button>
+                            :
+                            <div className='md:flex'>
+                                <CustomLink to={'/login'}>Login</CustomLink>
+                                <CustomLink to={'/signup'}>Sign Up</CustomLink>
+                            </div>
+                    }
                 </ul>
             </nav>
         </div>
