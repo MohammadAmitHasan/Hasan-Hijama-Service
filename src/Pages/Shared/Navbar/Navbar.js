@@ -29,12 +29,10 @@ const Navbar = () => {
                     <CustomLink to={'/blog'}>Blog</CustomLink>
                     <CustomLink to={'/about'}>About</CustomLink>
                     {
-                        user ? <button onClick={() => signOut(auth)} className='text-lg text-red-500 font-semibold mx-2 py-1 px-3 border-b-2 border-white hover:border-red-400 hover:bg-red-100 rounded-sm inline-block my-1 md:my-0'>Logout</button>
+                        user ?
+                            <button onClick={() => signOut(auth)} className='text-lg text-red-500 font-semibold mx-2 py-1 px-3 border-b-2 border-white hover:border-red-400 hover:bg-red-100 rounded-sm inline-block my-1 md:my-0'>Logout</button>
                             :
-                            <div className='md:flex'>
-                                <CustomLink to={'/login'}>Login</CustomLink>
-                                <CustomLink to={'/signup'}>Sign Up</CustomLink>
-                            </div>
+                            <CustomLink to={'/login'}>Login</CustomLink>
                     }
                 </ul>
             </nav>
