@@ -4,7 +4,7 @@ import displayPhoto from '../../images/Hasan.jpg'
 const About = () => {
     return (
         <div className='container mx-auto my-5 p-5'>
-            <div className='rounded-lg p-5 max-w-4xl shadow-xl border-2 mx-auto grid grid-cols-1 md:grid-cols-2 gap-5'>
+            <div className='rounded-lg p-5 max-w-4xl hover:bg-slate-50 shadow-lg hover:shadow-2xl duration-300 border-2 mx-auto grid grid-cols-1 md:grid-cols-2 gap-5'>
                 <div className='flex justify-center items-center'>
                     <div>
                         <img className='rounded-md max-w-xs' src={displayPhoto} alt="" />

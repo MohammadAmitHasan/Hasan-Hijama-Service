@@ -1,0 +1,11 @@
+#hijama-banner {
+    background-image: url('hijama.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+}
+
+#hijama-banner-title {
+    background-color: rgba(0, 0, 0, 0.6);
+}
