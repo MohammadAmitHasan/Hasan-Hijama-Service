@@ -2,9 +2,10 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.inin';
 import Loading from '../Shared/Loading/Loading'
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
 const Login = () => {
 
@@ -23,6 +24,8 @@ const Login = () => {
         signupLoading,
         signupError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
@@ -47,19 +50,20 @@ const Login = () => {
         return <Loading></Loading>
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
 
         if (login) {
-            signInWithEmailAndPassword(email, password);
+            await signInWithEmailAndPassword(email, password);
         }
         else {
-            const name = e.target.name.value;
+            const displayName = e.target.name.value;
             const confirmPassword = e.target.confirmPassword.value;
             if (password === confirmPassword) {
-                createUserWithEmailAndPassword(email, password);
+                await createUserWithEmailAndPassword(email, password);
+                await updateProfile({ displayName })
             }
             else {
                 alert('Password did not match')
@@ -90,7 +94,7 @@ const Login = () => {
 
                     {
                         login ? '' :
-                            <input type="text" name='name' className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Your Full Name' />
+                            <input type="text" name='name' className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Your Full Name' required />
                     }
 
                     <input type="email" name="email" id="email" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-900 my-2 rounded-md' placeholder='Email Address' required />
