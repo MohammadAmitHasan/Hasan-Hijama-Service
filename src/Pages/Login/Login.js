@@ -11,6 +11,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+    window.scrollTo(0, 0);
+
     const refEmail = useRef('');
     const refName = useRef('');
     const refPassword = useRef('');
@@ -86,14 +88,12 @@ const Login = () => {
         const email = refEmail.current.value;
         if (email) {
             await sendPasswordResetEmail(email);
-            toast('Reset password email send');
+            toast('An email is sent to reset your password.');
         }
         else {
             toast('Please enter your email address and try again');
         }
     }
-
-
 
     const handleGoogleSignIn = () => {
         signInWithGoogle();

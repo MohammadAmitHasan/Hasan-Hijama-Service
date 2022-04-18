@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Service = ({ service }) => {
     const { id, name, photo, price, description } = service;
+
+    const navigate = useNavigate();
+    const handleBooking = id => {
+        navigate(`/checkout/${id}`);
+        localStorage.setItem('selectedService', JSON.stringify(service));
+    }
+
     return (
         <div className='border-2 shadow hover:shadow-xl hover:border-red-200  ease-in duration-300 rounded-lg relative'>
             <div className='p-2'>
@@ -14,9 +21,7 @@ const Service = ({ service }) => {
                 </div>
             </div>
             <div className='w-full text-center absolute bottom-4'>
-                <Link to={`/checkout/${id}`}>
-                    <button className='py-2 bg-red-200 hover:bg-red-300 rounded-full w-3/4 mx-auto bottom-2'>Get Booking</button>
-                </Link>
+                <button onClick={() => handleBooking(id)} className='py-2 bg-red-200 hover:bg-red-300 rounded-full w-3/4 mx-auto bottom-2'>Get Booking</button>
             </div>
         </div>
     );

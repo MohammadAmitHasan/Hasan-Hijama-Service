@@ -4,6 +4,7 @@ import Services from '../Services/Services';
 import Hijama from './Hijama/Hijama';
 
 const Home = () => {
+    window.scrollTo(0, 0);
     return (
         <div>
             <Banner></Banner>
