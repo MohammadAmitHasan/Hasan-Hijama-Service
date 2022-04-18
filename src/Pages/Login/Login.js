@@ -1,4 +1,3 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useRef } from 'react';
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -34,9 +33,9 @@ const Login = () => {
         signupError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [updateProfile] = useUpdateProfile(auth);
 
-    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
+    const [sendPasswordResetEmail, resetError] = useSendPasswordResetEmail(
         auth
     );
 
@@ -137,8 +136,6 @@ const Login = () => {
 
                 <p className='mt-3 text-lg'>
                     {login ? "Don't have an account.?" : "Already Have an account.?"}
-
-                    {/* <Link className='text-red-600 ml-1.5' to={'/signup'}>Sign Up</Link> */}
 
                     <button onClick={() => setLogin(!login)} className='text-red-600 ml-1.5'>
                         {login ? "Sign Up" : "Login"}

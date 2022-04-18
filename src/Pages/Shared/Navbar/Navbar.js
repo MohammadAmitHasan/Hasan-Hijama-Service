@@ -26,7 +26,7 @@ const Navbar = () => {
                 <ul className={`bg-white text-center md:flex items-center w-full justify-end absolute md:static duration-300 ease-in ${open ? 'top-20' : 'top-[-280px]'}`}>
                     <CustomLink to={'/'}>Home</CustomLink>
                     <CustomLink to={'/hijama'}>Hijama</CustomLink>
-                    <CustomLink to={'/blog'}>Blog</CustomLink>
+                    <CustomLink to={'/blogs'}>Blogs</CustomLink>
                     <CustomLink to={'/about'}>About</CustomLink>
                     {
                         user ?

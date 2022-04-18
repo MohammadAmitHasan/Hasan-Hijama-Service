@@ -7,6 +7,9 @@ import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import Checkout from './Pages/Checkout/Checkout';
 import Login from './Pages/Login/Login';
 import RequireAuth from './Pages/Shared/RequireAuth/RequireAuth';
+import HijamaDetails from './Pages/HijamaDetails/HijamaDetails';
+import Blogs from './Pages/Blogs/Blogs';
+import About from './Pages/About/About';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           </RequireAuth>
         }></Route>
 
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
+        <Route path='/hijama' element={<HijamaDetails></HijamaDetails>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
 
         <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
