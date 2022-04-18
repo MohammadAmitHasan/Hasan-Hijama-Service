@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.inin';
+import Loading from '../Shared/Loading/Loading'
 
 const Login = () => {
 
@@ -12,16 +13,25 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
-    if (user) {
+
+    if (user || googleUser) {
         navigate(from, { replace: true });
     }
 
     let errorInfo = '';
-    if (error) {
-        errorInfo = error.message;
+    if (error || googleError) {
+        errorInfo = <p className='p-4 rounded bg-red-300'>
+            {error?.message} {googleError?.message}
+        </p>
+    }
+
+    if (googleLoading || loading) {
+        return <Loading></Loading>
     }
 
     const handleLogin = (e) => {
@@ -31,6 +41,10 @@ const Login = () => {
         signInWithEmailAndPassword(email, password)
     }
 
+    const handleGoogleSignIn = () => {
+        signInWithGoogle();
+    }
+
     return (
         <div className='container mx-auto mb-10 p-5'>
 
@@ -38,7 +52,7 @@ const Login = () => {
                 <h2 className='text-red-500 text-4xl font-semibold text-center mb-4'>Login</h2>
 
                 {
-                    error && <p className='p-4 rounded bg-red-300'>{errorInfo}</p>
+                    errorInfo
                 }
 
                 <form onSubmit={handleLogin}>
@@ -61,7 +75,7 @@ const Login = () => {
                 </div>
 
                 <div>
-                    <button className='w-full bg-white flex items-center justify-center mb-3 border-2 my-2 rounded-md h-12'>
+                    <button onClick={handleGoogleSignIn} className='w-full bg-white flex items-center justify-center mb-3 border-2 my-2 rounded-md h-12'>
                         <span className='mr-1'><img src="https://img.icons8.com/color/48/000000/google-logo.png" /></span>
                         Continue With Google</button>
 
