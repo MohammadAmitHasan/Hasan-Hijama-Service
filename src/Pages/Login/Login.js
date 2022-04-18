@@ -1,13 +1,20 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.inin';
 import Loading from '../Shared/Loading/Loading'
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+    const refEmail = useRef('');
+    const refName = useRef('');
+    const refPassword = useRef('');
+    const refConfirmPassword = useRef('');
 
     const [login, setLogin] = useState(true);
 
@@ -27,6 +34,10 @@ const Login = () => {
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
+        auth
+    );
+
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
 
@@ -39,10 +50,10 @@ const Login = () => {
     }
 
     let errorInfo;
-    if (error || signupError || googleError || githubError) {
+    if (error || signupError || googleError || githubError || resetError) {
         errorInfo = '';
         errorInfo = <p className='p-4 rounded bg-red-300'>
-            {error?.message} {googleError?.message} {githubError?.message} {signupError?.message}
+            {error?.message} {googleError?.message} {githubError?.message} {signupError?.message} {resetError?.message}
         </p>
     }
 
@@ -52,25 +63,36 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+        const email = refEmail.current.value;
+        const password = refPassword.current.value;
 
         if (login) {
             await signInWithEmailAndPassword(email, password);
         }
         else {
-            const displayName = e.target.name.value;
-            const confirmPassword = e.target.confirmPassword.value;
+            const displayName = refName.current.value;
+            const confirmPassword = refConfirmPassword.current.value;
             if (password === confirmPassword) {
                 await createUserWithEmailAndPassword(email, password);
                 await updateProfile({ displayName })
             }
             else {
-                alert('Password did not match')
+                toast('The Passwords did not match')
             }
         }
-
     }
+
+    const handleResetPassword = async (e) => {
+        const email = refEmail.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Reset password email send');
+        }
+        else {
+            toast('Please enter your email address and try again');
+        }
+    }
+
 
 
     const handleGoogleSignIn = () => {
@@ -94,15 +116,15 @@ const Login = () => {
 
                     {
                         login ? '' :
-                            <input type="text" name='name' className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Your Full Name' required />
+                            <input ref={refName} type="text" name='name' className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Your Full Name' required />
                     }
 
-                    <input type="email" name="email" id="email" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-900 my-2 rounded-md' placeholder='Email Address' required />
+                    <input ref={refEmail} type="email" name="email" id="email" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-900 my-2 rounded-md' placeholder='Email Address' required />
 
-                    <input type="password" name="password" id="password" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Enter Password' required />
+                    <input ref={refPassword} type="password" name="password" id="password" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Enter Password' required />
 
                     {
-                        login ? '' : <input type="password" name="confirmPassword" id="confirmPassword" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Confirm Password' required />
+                        login ? '' : <input ref={refConfirmPassword} type="password" name="confirmPassword" id="confirmPassword" className='bg-gray-200 w-full p-3 focus:outline-red-300 text-gray-800 my-2 rounded-md' placeholder='Confirm Password' required />
                     }
 
                     <button type="submit" className='w-full p-3 rounded-full bg-red-500 hover:bg-red-600 text-white my-3'>
@@ -122,6 +144,15 @@ const Login = () => {
                         {login ? "Sign Up" : "Login"}
                     </button>
                 </p>
+                {
+                    login ?
+                        <p className='mt-3'>
+                            <button onClick={handleResetPassword} className='text-red-600'>
+                                Forgot Password.?
+                            </button>
+                        </p>
+                        : ''
+                }
 
                 <div className='grid grid-cols-7 mb-3 mt-5 items-center'>
                     <div className='bg-gray-900 h-0.5 col-span-3'></div>
@@ -140,7 +171,7 @@ const Login = () => {
                         </span>
                         Continue With Github</button>
                 </div>
-
+                <ToastContainer />
             </div>
         </div>
     );
