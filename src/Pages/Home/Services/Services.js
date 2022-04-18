@@ -3,7 +3,7 @@ import useServices from '../../../CustomHooks/useServices';
 import Service from './Service/Service';
 
 const Services = () => {
-    const [services, setServices] = useServices();
+    const [services] = useServices();
 
     return (
         <div className='container mx-auto mt-10 p-5'>

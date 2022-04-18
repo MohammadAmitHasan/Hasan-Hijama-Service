@@ -14,6 +14,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className='mt-8'>
                     <p className="my-1">
                         <Link to='/hijama'>Know About Hijama</Link>

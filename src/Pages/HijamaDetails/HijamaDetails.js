@@ -4,8 +4,9 @@ import HijamaDetail from './HijamaDetail/HijamaDetail';
 import './HijamaDetails.css'
 
 const HijamaDetails = () => {
-
+    // Go to the top when loading
     window.scrollTo(0, 0);
+
     const [hijamaDetails] = useHijama();
 
     return (
@@ -15,7 +16,7 @@ const HijamaDetails = () => {
             </div>
 
             <div className='container mx-auto mt-5 mb-10 p-5 '>
-                <div className=''>
+                <div>
                     <article className='mb-5 leading-7 text-gray-700 max-w-xl mx-auto p-5 border-2 shadow-lg hover:border-red-200 duration-200 ease-in hover:shadow-2xl rounded-lg hover:bg-slate-100'>
                         <h2 className='text-red-500 my-2 text-3xl font-semibold text-center'>What is Hijama.?</h2>
                         <p>

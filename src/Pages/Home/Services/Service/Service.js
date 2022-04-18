@@ -7,6 +7,8 @@ const Service = ({ service }) => {
     const navigate = useNavigate();
     const handleBooking = id => {
         navigate(`/checkout/${id}`);
+
+        // Store the selected service in local storage
         localStorage.setItem('selectedService', JSON.stringify(service));
     }
 
@@ -20,6 +22,7 @@ const Service = ({ service }) => {
                     <h3 className='text-xl mt-3'>Price:  <span className='text-orange-700 font-semibold'>{price}<small className='text-sm'> tk</small></span></h3>
                 </div>
             </div>
+
             <div className='w-full text-center absolute bottom-4'>
                 <button onClick={() => handleBooking(id)} className='py-2 bg-red-200 hover:bg-red-300 rounded-full w-3/4 mx-auto bottom-2'>Get Booking</button>
             </div>

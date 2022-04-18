@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import displayPhoto from '../../../../images/banner3.jpg'
+import displayPhoto from '../../../images/banner3.jpg'
 
 const Hijama = () => {
     return (

@@ -1,8 +1,12 @@
 import React from 'react';
 
 const Blogs = () => {
+    // Go to the top when loading
+    window.scrollTo(0, 0);
     return (
         <div className='container mx-auto my-5 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+
+            {/* Answer 1 */}
             <article className="p-4 rounded-lg leading-7 text-gray-700 border-2 shadow-lg hover:bg-gray-100 hover:border-red-200  ease-in duration-200">
                 <h3 className='text-xl text-red-500 mb-3'>
                     Difference between authorization and authentication
@@ -15,6 +19,8 @@ const Blogs = () => {
 
                 </p>
             </article>
+
+            {/* Answer 2 */}
             <article className="p-4 rounded-lg leading-7 text-gray-700 border-2 shadow-lg hover:bg-gray-100 hover:border-red-200  ease-in duration-200">
                 <h3 className='text-xl text-red-500 mb-3'>Why are you using firebase? What other options do you have to implement authentication?</h3>
 
@@ -32,6 +38,8 @@ const Blogs = () => {
                 </p>
 
             </article>
+
+            {/* Answer 3 */}
             <article className="p-4 rounded-lg leading-7 text-gray-700 border-2 shadow-lg hover:bg-gray-100 hover:border-red-200  ease-in duration-200">
                 <h3 className='text-xl text-red-500 mb-3'>
                     What other services does firebase provide other than authentication.?

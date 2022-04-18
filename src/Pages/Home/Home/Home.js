@@ -1,7 +1,8 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
+import Hijama from '../Hijama/Hijama';
 import Services from '../Services/Services';
-import Hijama from './Hijama/Hijama';
+
 
 const Home = () => {
     window.scrollTo(0, 0);

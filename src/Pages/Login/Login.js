@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import auth from '../../firebase.inin';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading'
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';

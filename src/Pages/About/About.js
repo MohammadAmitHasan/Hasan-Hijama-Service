@@ -2,14 +2,18 @@ import React from 'react';
 import displayPhoto from '../../images/Hasan.jpg'
 
 const About = () => {
+    // Go to the top when loading
+    window.scrollTo(0, 0);
     return (
         <div className='container mx-auto my-5 p-5'>
-            <div className='rounded-lg p-5 max-w-4xl hover:bg-slate-50 shadow-lg hover:shadow-2xl duration-300 border-2 mx-auto grid grid-cols-1 md:grid-cols-2 gap-5'>
+            <div className='rounded-lg p-5 max-w-4xl hover:bg-slate-100 shadow-lg hover:shadow-2xl duration-300 border-2 mx-auto grid grid-cols-1 md:grid-cols-2 gap-5'>
                 <div className='flex justify-center items-center'>
                     <div>
                         <img className='rounded-md max-w-xs' src={displayPhoto} alt="" />
                     </div>
                 </div>
+
+                {/* Goal Description section */}
                 <div>
                     <h2 className='text-red-500 text-3xl text-center font-semibold mb-3'>Md. Amit Hasan</h2>
                     <div>

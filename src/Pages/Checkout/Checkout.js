@@ -2,21 +2,23 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import auth from '../../firebase.inin';
+import auth from '../../firebase.init';
 
 const Checkout = ({ services }) => {
-
+    // Go to the top when loading
     window.scrollTo(0, 0);
+
     const { serviceId } = useParams();
 
     const [success, setSuccess] = useState(false);
 
+    // Get data from localStorage
     const selectedService = JSON.parse(localStorage.getItem('selectedService'));
     const { id, name, photo, price, description } = selectedService;
 
     const [user] = useAuthState(auth);
-    console.log(user)
 
+    // Booking info submit button handler
     const handleSubmit = (e) => {
         e.preventDefault();
         toast('Booking Confirmed')
@@ -31,7 +33,7 @@ const Checkout = ({ services }) => {
                 </div>
             }
             {
-
+                // Only display if the local storage data and route id matches
                 +serviceId === id &&
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
 
@@ -53,6 +55,7 @@ const Checkout = ({ services }) => {
                         </div>
                     </div>
 
+                    {/* Display the selected service */}
                     <div className='mx-auto mt-3 max-w-md border-2 p-5 rounded-lg bg-slate-50'>
                         <h2 className='text-red-500 text-3xl font-semibold text-center mb-4'>Selected Service</h2>
                         <img className='rounded' src={photo} alt="" />
@@ -62,11 +65,10 @@ const Checkout = ({ services }) => {
                             <p className='text-gray-700 leading-7'>{description}</p>
                         </div>
                     </div>
+
                     <ToastContainer />
                 </div>
             }
-
-
         </div>
     );
 };

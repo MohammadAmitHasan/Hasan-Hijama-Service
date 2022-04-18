@@ -4,7 +4,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import CustomLink from './CustomLink/CustomLink';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.inin';
+import auth from '../../../firebase.init';
 
 const Navbar = () => {
 
@@ -28,6 +28,7 @@ const Navbar = () => {
                     <CustomLink to={'/hijama'}>Hijama</CustomLink>
                     <CustomLink to={'/blogs'}>Blogs</CustomLink>
                     <CustomLink to={'/about'}>About</CustomLink>
+
                     {
                         user ?
                             <button onClick={() => signOut(auth)} className='text-lg text-red-500 font-semibold mx-2 py-1 px-3 border-b-2 border-white hover:border-red-400 hover:bg-red-100 rounded-sm inline-block my-1 md:my-0'>Logout</button>
