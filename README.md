@@ -6,6 +6,7 @@ This is a simple website of a hijama therapy professional.
 
 
 ### Website Features and functionalities
+* Users can see the services the service provider provides
 * Single page design hence faster
 * Changing route does'n reload the website
 * The website is fully responsive (Mobile device, Tablet, Laptop, Large display)
